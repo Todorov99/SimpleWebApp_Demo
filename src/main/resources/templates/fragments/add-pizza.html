@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<form class="container" th:fragment="add-pizza-form" method="post" th:object="${addPizzaBindingModel}">
+    <div class="form-group" >
+        <label for="exampleFormControlInput1">Вид пица</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" th:field="*{pizzaName}">
+        <div id="crHelp" class="form-control-feedback" th:each="error : ${#fields.errors('pizzaName')}" th:text="${error}"></div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Вид тесто</label>
+        <select class="form-control" id="exampleFormControlSelect1" th:field="*{pasteType}"/>
+            <option th:each="paste : ${allPastes}" th:value="${paste}" th:text="${paste}">1</option>
+        </select>
+    </div>
+   <div class="form-group">
+        <label for="exampleFormControlSelect1">Парчета</label>
+        <select class="form-control" id="exampleFormControlSelect2" th:field="*{size}">
+            <option th:each="pizzaSizes : ${pizzaSizes}" th:value="${pizzaSizes}" th:text="${#strings.capitalize(#strings.toLowerCase(pizzaSizes))}">1</option>
+        </select>
+    </div>
+
+    <div class="form-group" >
+        <label for="exampleFormControlInput1">Цена</label>
+        <input type="number"  class="form-control" id="exampleFormControlInput2" placeholder="0.0 лв" th:field="*{price}">
+        <div id="crHelp142" class="form-control-feedback" th:each="error : ${#fields.errors('price')}" th:text="${error}"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect2">Продукти</label>
+        <select multiple class="form-control" id="exampleFormControlSelect4"  th:field="*{products}"/>
+            <option th:each="product : ${allProducts}" th:value="${product}" th:text="${product}">1</option>
+        <div id="crHelp2" class="form-control-feedback" th:each="error : ${#fields.errors('products')}" th:text="${error}"></div>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Описание</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{description}"></textarea>
+        <div id="crHelp12" class="form-control-feedback" th:each="error : ${#fields.errors('description')}" th:text="${error}"></div>
+    </div>
+    <div class="button-holder d-flex justify-content-around">
+        <button type="submit" class="btn btn-outline-warning">Добави</button>
+    </div>
+
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+</form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add pizza</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css"
+          th:href="@{bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body style="background: #ac6c16">
+<div >
+
+    <nav th:replace="fragments/LogInNav::log-nav"></nav>
+    <div class="container" >
+        <div class="row">
+            <div class="col-12">
+                <form th:object="${allPizzasViewModel}">
+                <table class="table table-image">
+                    <thead>
+                    <tr>
+                        <th scope="col">Пица</th>
+                        <th scope="col">Размер</th>
+                        <th scope="col">Вид тесто</th>
+                        <th scope="col">Продукти</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Цена</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pizza : ${allPizzas}" >
+                        <td th:text="${pizza.getPizzaName()}"></td>
+                        <td th:text="${pizza.getSize().name()}"></td>
+                        <td th:text="${pizza.getDescription()}"></td>
+                        <td th:text="${pizza.getPrice()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{jquery/jquery.min.js}"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

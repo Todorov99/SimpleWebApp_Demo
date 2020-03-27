@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav th:replace="fragments/LogInNav::log-nav"></nav>
+
+<div>
+    <img src="https://img.freepik.com/free-photo/tasty-pepperoni-pizza-black-concrete-background_79782-103.jpg?size=626&ext=jpg" th:width= "1519" th:high="700" alt="Responsive image">
+</div>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/jquery/jquery.slim.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
